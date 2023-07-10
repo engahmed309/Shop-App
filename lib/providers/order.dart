@@ -25,11 +25,13 @@ class Order with ChangeNotifier {
     return [..._orders];
   }
 
+  final String token;
+  Order(this.token, this._orders);
   Future<void> addOrder(List<cartItem> cartProducts, double total) async {
     //sending your order to fire base
 
-    var url = Uri.parse(
-        "https://shop-app-65b3e-default-rtdb.firebaseio.com/orders.json");
+    final url = Uri.parse(
+        "https://shop-app-65b3e-default-rtdb.firebaseio.com/orders.json?auth=$token");
     var mydateTime = DateTime.now();
     final response = await http.post(url,
         body: json.encode({
@@ -58,16 +60,16 @@ class Order with ChangeNotifier {
 
   //FETCHING ORDERS FROM FIREBASE
   Future<void> fetshAndSetOrders() async {
-    var url = Uri.parse(
-        'https://shop-app-65b3e-default-rtdb.firebaseio.com/orders.json');
+    final url = Uri.parse(
+        'https://shop-app-65b3e-default-rtdb.firebaseio.com/orders.json?auth=$token');
     final response = await http.get(url);
     //print(json.decode(response.body));
     List<OrderItem> loadedOrders = [];
-    if(json.decode(response.body) ==null){
+    if (json.decode(response.body) == null) {
       return;
     }
     var extractedOrders = json.decode(response.body) as Map<String, dynamic>;
-    
+
     extractedOrders.forEach((orderId, orderData) {
       loadedOrders.add(
         OrderItem(
@@ -85,7 +87,7 @@ class Order with ChangeNotifier {
         ),
       );
     });
-    _orders=loadedOrders.reversed.toList();
+    _orders = loadedOrders.reversed.toList();
     notifyListeners();
   }
 }

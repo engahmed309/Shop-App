@@ -10,6 +10,7 @@ import '../widgets/products_grid.dart';
 enum menuOptions { Favourite, All }
 
 class ProductOverViewScreen extends StatefulWidget {
+  static const routeName = "/product-overView-screen";
   @override
   State<ProductOverViewScreen> createState() => _ProductOverViewScreenState();
 }
@@ -24,11 +25,13 @@ class _ProductOverViewScreenState extends State<ProductOverViewScreen> {
       setState(() {
         _isLoading = true;
       });
-      Provider.of<ProductProvider>(context)
-          .fetchAndSetProd()
-          .then((_) => setState(() {
+      Provider.of<ProductProvider>(context).fetchAndSetProd().then(
+            (_) => setState(
+              () {
                 _isLoading = false;
-              }));
+              },
+            ),
+          );
     }
     _isInit = false;
     super.didChangeDependencies();

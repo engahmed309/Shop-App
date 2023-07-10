@@ -162,7 +162,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                     },
                     onSaved: (value) {
                       _editedProduct = Product(
-                          isFavourite: _editedProduct.isFavourite,
+                          isFavorite: _editedProduct.isFavorite,
                           id: _editedProduct.id,
                           title: value.toString(),
                           description: _editedProduct.description,
@@ -196,7 +196,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                     },
                     onSaved: (value) {
                       _editedProduct = Product(
-                          isFavourite: _editedProduct.isFavourite,
+                          isFavorite: _editedProduct.isFavorite,
                           id: _editedProduct.id,
                           title: _editedProduct.title,
                           description: _editedProduct.description,
@@ -214,7 +214,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                     ),
                     onSaved: (value) {
                       _editedProduct = Product(
-                        isFavourite: _editedProduct.isFavourite,
+                        isFavorite: _editedProduct.isFavorite,
                         id: _editedProduct.id,
                         title: _editedProduct.title,
                         description: value.toString(),
@@ -260,7 +260,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                           },
                           onSaved: (value) {
                             _editedProduct = Product(
-                              isFavourite: _editedProduct.isFavourite,
+                              isFavorite: _editedProduct.isFavorite,
                               id: _editedProduct.id,
                               title: _editedProduct.title,
                               description: _editedProduct.description,
